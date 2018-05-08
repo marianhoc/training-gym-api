@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+20.times do
+  v = Video.new
+  v.url = 'https://www.youtube.com/watch?v=' + Faker::Internet.password(12)
+  v.titulo = Faker::Hobbit.character
+  v.save
+end
