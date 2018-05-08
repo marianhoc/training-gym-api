@@ -5,11 +5,7 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
 
-    render json:
-    	{
-    		body: @videos
-    	},
-    	status: :ok
+    render json: @videos
 
   end
 
