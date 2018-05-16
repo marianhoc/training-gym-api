@@ -7,7 +7,11 @@ class TrainingsController < ApplicationController
             @results.push({date: training.date, time: training.time, name: training.name,
                 teacher: professor.name})
         end
-        render json: @results, status: :ok, 
+        render json: @results, status: :ok
+    end
+
+    def create
+        
     
     private
     # Use callbacks to share common setup or constraints between actions.
