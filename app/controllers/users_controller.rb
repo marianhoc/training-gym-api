@@ -8,6 +8,19 @@ class UsersController < ApplicationController
     render json: @users
   end
 
+  def names
+    @names = []
+    u = User.all
+    u.each do |user|
+      @names.push({id: user.id, name: user.name})
+    end
+    render json:
+      @names,
+      message: "Nomes dos usuários carregados com sucesso",
+      status: :ok
+  end
+
+
   # GET /users/1
   def show
     render json: @user

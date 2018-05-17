@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-	
+
+  #usuarios
+	get 'usernames', to: "users#names"
   resources :users
-	resources :videos
+
+  #videos
+  resources :videos
+  
+  #treinos
+  get 'calendar', to: "trainings#index"
+  post 'criatreino', to: "trainings#create"
 
 end
