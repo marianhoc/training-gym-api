@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   #treinos
   get 'calendar', to: "trainings#index"
   post 'criatreino', to: "trainings#create"
+  delete 'excluitreino', to: "trainings#destroy"
 
 end

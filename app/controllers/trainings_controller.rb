@@ -3,29 +3,61 @@ class TrainingsController < ApplicationController
         @results = []
         trainings = Training.all
         trainings.each do |training|
-            professor = User.where(id: training.user_id)
-            puts professor
+            professor = User.find_by_id(training.user_id)
             @results.push(
                 {
-                name: training.name,
-                description: training.activity,
-                day: training.date.day(),
-                month: training.date.month(),
-                year: training.date.year(),
-                hour: training.date.hour(),
-                minutes: training.date.min(),
-                teacher_name: professor
-            }
+                    id: training.id,
+                    name: training.name,
+                    description: training.activity,
+                    day: training.date.day(),
+                    month: training.date.month(),
+                    year: training.date.year(),
+                    hour: training.date.hour(),
+                    minutes: training.date.min(),
+                    teacher_name: professor.name
+                }
             )
         end
         render json: 
-        {
-            status: "OK",
-            message: "Arquivos carregados com sucesso",
-            treinos: @results
-        },
+        @results,
         status: :ok
     end
+
+    # calendar/id
+    def show
+        t = Training.find_by_id(params[:id])
+        if t
+            professor = User.find_by_id(t.user_id)
+            render json:
+            {
+                status: "OK",
+                message: "Evento encontrado com sucesso",
+                dados: {
+                    id: t.id,
+                    name: t.name,
+                    description: t.activity,
+                    day: t.date.day(),
+                    month: t.date.month(),
+                    year: t.date.year(),
+                    hour: t.date.hour(),
+                    minutes: t.date.min(),
+                    teacher_name: professor.name
+                }
+            },
+            status: :ok
+        
+        else
+            render json:{
+                status: "ERROR",
+                message: "Não foi possível encontrar o evento.",
+                id: params[:id]
+            },
+            status:  :unprocessable_entity
+        end
+    end
+
+
+
 
     #post /criatreino
     def create
@@ -60,7 +92,10 @@ class TrainingsController < ApplicationController
 
     end
 
-        
+    #delete /excluitreino
+    def destroy
+       @training.destroy
+    end        
     
     private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,7 +105,8 @@ class TrainingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def training_params
-      params.require(:training).permit(:day, :month, :year, :hour, :minutes, :description)
+      params.require(:training).permit(:day, :month, :year, :hour, :minutes, :description,
+        :user_id)
     end
 
 end
