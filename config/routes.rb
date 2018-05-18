@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :videos
   
   #treinos
-  get 'calendar', to: "trainings#index"
-  post 'criatreino', to: "trainings#create"
-  delete 'excluitreino', to: "trainings#destroy"
+  get 'trainings', to: "trainings#index"
+  post 'training', to: "trainings#create"
+  delete 'training', to: "trainings#destroy"
 
 end
