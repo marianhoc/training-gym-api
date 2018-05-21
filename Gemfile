@@ -19,6 +19,12 @@ gem 'puma', '~> 3.7'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# autenticação com a devise
+gem 'devise'
+
+#envio de token com a devise
+gem 'simple_token_authentication', '~> 1.0' # see semver.org
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

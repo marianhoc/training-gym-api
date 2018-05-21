@@ -7,20 +7,3 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
-
-20.times do
-  v = Video.new
-  v.url = 'kizame-karate.com/video/' + Faker::Internet.password(12)
-  v.titulo = Faker::Hobbit.character
-  v.save
-end
-
-20.times do
-  u = User.new
-  u.name = Faker::Name.name
-  u.email = Faker::Internet.email
-  u.password = '12345'
-  u.password_confirmation = '12345'
-  u.age = Faker::Number.digit + Faker::Number.digit
-  u.save
-end
