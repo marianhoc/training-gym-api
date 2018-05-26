@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  #usuarios
-	get 'usernames', to: "users#names"
+  #devise_for :users
 
   #videos
   resources :videos
@@ -14,5 +12,7 @@ Rails.application.routes.draw do
 
   #sessions
   resources :sessions, only: [:create, :destroy]
+
+  resources :users
 
 end
