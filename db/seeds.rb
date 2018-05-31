@@ -7,3 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+
+
+10.times do |index|
+    User.create(name: Faker::Name.name,
+                email: "#{index}@junior.com",
+                age: rand(5 .. 15),
+                password: "123456",
+                password_confirmation: "123456"
+                )
+    end
+  
