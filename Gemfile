@@ -29,7 +29,7 @@ gem 'simple_token_authentication', '~> 1.0' # see semver.org
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 # Generate fake content
 gem 'faker'
