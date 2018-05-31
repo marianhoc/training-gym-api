@@ -3,22 +3,14 @@ class UsersController < ApplicationController
     def index
         @users = User.all
 
-        usuarios = []
-
-        @users.each do |user|
-          usuarios.push({
-            name: user.name,
-            email: user.email
-					})
-				end
+		render json: @users
+		
     end
 
     # GET /users/1
     def show
-        render json: {
-          name: @user.name,
-					email: @user.email
-        },
+		render json: @user
+		
         status: :ok
 		end
 		
@@ -57,7 +49,7 @@ class UsersController < ApplicationController
 
 		 	# Use callbacks to share common setup or constraints between actions.
 		 	def set_user
-				@user = User.find(params[:id])
+				@user = User..where(authentication_token: (params[:id])).first
 			end
 
 			# Only allow a trusted parameter "white list" through.
