@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :training, dependent: :destroy
+  
   acts_as_token_authenticatable
 
   # Include default devise modules. Others available are:
