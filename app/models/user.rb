@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_many :training, dependent: :destroy
   
   acts_as_token_authenticatable
 
