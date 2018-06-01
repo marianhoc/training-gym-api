@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   delete 'training', to: "trainings#destroy"
 
   #sessions
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:create]
+
+  delete "/sessions/:authentication_token", to: "sessions#destroy"
+
 
   resources :users
 
