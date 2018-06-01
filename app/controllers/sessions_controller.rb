@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        
+        user = User.find_by(authentication_token: params[:authentication_token])
+        user.update_attribute(:authentication_token, nil)
 
     end
     
